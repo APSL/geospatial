@@ -50,7 +50,8 @@ class GeoRasterLayer(models.Model):
     # wms options
     params_wms = fields.Char("Params", help="Need to provide at least a LAYERS param")
     server_type = fields.Char(
-        help="The type of the remote WMS server: mapserver, geoserver, carmentaserver, or qgis",
+        help="The type of the remote WMS server: mapserver, \
+            geoserver, carmentaserver, or qgis",
     )
 
     # technical field to display or not layer type -- Not used
@@ -70,6 +71,7 @@ class GeoRasterLayer(models.Model):
         "ir.ui.view", "Related View", domain=[("type", "=", "geoengine")], required=True
     )
     use_to_edit = fields.Boolean("Use to edit")
+    opacity = fields.Float(default=1.0)
 
     @api.depends("raster_type", "is_wmts")
     def _compute_has_type(self):

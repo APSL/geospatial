@@ -106,7 +106,8 @@ class GeoField(fields.Field):
         if same_type and not shape.is_empty:
             if shape.geom_type.lower() != self.geo_type.lower():
                 msg = _(
-                    "Geo Value %(geom_type)s must be of the same type %(geo_type)s as fields",
+                    "Geo Value %(geom_type)s must be of the same type %(geo_type)s \
+                        as fields",
                     geom_type=shape.geom_type.lower(),
                     geo_type=self.geo_type.lower(),
                 )
@@ -269,10 +270,13 @@ class GeoPoint(GeoField):
 
     @classmethod
     def to_latlon(cls, cr, geopoint):
-        """Convert a UTM coordinate point to (latitude, longitude):"""
-        # Line to execute to retrieve longitude, latitude  from UTM in postgres command line:
+        """Convert a UTM coordinate point to \
+            (latitude, longitude):"""
+        # Line to execute to retrieve
+        # longitude, latitude from UTM in postgres command line:
         #  SELECT ST_X(geom), ST_Y(geom) FROM (SELECT ST_TRANSFORM(ST_SetSRID(
-        #               ST_MakePoint(601179.61612, 6399375,681364), 900913), 4326) as geom) g;
+        #               ST_MakePoint(601179.61612, 6399375,681364),
+        # ..............900913), 4326) as geom) g;
         if isinstance(geopoint, BaseGeometry):
             geo_point_instance = geopoint
         else:
