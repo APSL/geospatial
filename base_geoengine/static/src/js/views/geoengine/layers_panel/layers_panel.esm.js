@@ -11,8 +11,9 @@ import {vectorLayersStore} from "../../../vector_layers_store.esm";
 import {useOwnedDialogs, useService} from "@web/core/utils/hooks";
 import {DomainSelectorGeoFieldDialog} from "../../../widgets/domain_selector_geo_field/domain_selector_geo_field_dialog/domain_selector_geo_field_dialog.esm";
 import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
+import {useSortable} from "@web/core/utils/sortable_owl";
 
-import {Component, onWillStart, useState} from "@odoo/owl";
+import {Component, onWillStart, useState, useRef} from "@odoo/owl";
 
 export class LayersPanel extends Component {
     setup() {
@@ -48,10 +49,27 @@ export class LayersPanel extends Component {
         /**
          * Allows you to change the priority of the layer by sliding them over each other
          */
+        let dataRowId = "";
+        useSortable({
+            ref: useRef("root"),
+            elements: ".item",
+            handle: ".fa-sort",
+            onDragStart: (params) => {
+                const { element } = params;
+                dataRowId = element.dataset.id;
+                this.sortStart(params);
+            },
+            onDragEnd: (params) => this.sortStop(params),
+            onDrop: (params) => this.sort(dataRowId, params),
+        });
     }
 
     sortStart({element}) {
         element.classList.add("shadow");
+    }
+
+    sortStop({element}) {
+        element.classList.remove("shadow");
     }
 
     async loadIsAdmin() {
