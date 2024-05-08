@@ -1,6 +1,6 @@
 /** @odoo-module **/
 
-import {DomainField} from "@web/views/fields/domain/domain_field";
+import {domainField, DomainField} from "@web/views/fields/domain/domain_field";
 import {registry} from "@web/core/registry";
 
 export class DomainFieldExtend extends DomainField {
@@ -31,4 +31,4 @@ export class DomainFieldExtend extends DomainField {
     }
 }
 
-registry.category("fields").add("domain", DomainFieldExtend, {force: true});
+domainField.component = DomainFieldExtend;
