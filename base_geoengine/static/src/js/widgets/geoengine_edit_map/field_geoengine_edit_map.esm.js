@@ -140,8 +140,7 @@ export class FieldGeoEngineEditMap extends Component {
             if (this.displayValue == value) return;
             this.displayValue = value;
             var ft = new ol.Feature({
-                geometry: new ol.format.GeoJSON().readGeometry(value),
-                labelPoint: new ol.format.GeoJSON().readGeometry(value),
+                geometry: this.format.readGeometry(value)
             });
             this.source.clear();
             this.source.addFeature(ft);
@@ -250,8 +249,8 @@ export class FieldGeoEngineEditMap extends Component {
         });
         this.map.addLayer(this.vectorLayer);
         this.format = new ol.format.GeoJSON({
-            internalProjection: this.map.getView().getProjection(),
-            externalProjection: "EPSG:" + this.srid,
+            featureProjection: this.map.getView().getProjection(),
+            dataProjection: "EPSG:" + this.srid,
         });
 
         if (!this.props.readonly) {
