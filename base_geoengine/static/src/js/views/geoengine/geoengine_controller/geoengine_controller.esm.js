@@ -58,7 +58,7 @@ export class GeoengineController extends Component {
             this.props.fields
         );
 
-        const modelConfig = this.props.state.modelState.config || {
+        const modelConfig = this.props.state?.modelState.config || {
             resModel: resModel,
             fields,
             activeFields,
@@ -67,7 +67,7 @@ export class GeoengineController extends Component {
 
         return {
             config: modelConfig,
-            state: this.props.state.modelState,
+            state: this.props.state?.modelState,
             limit: archInfo.limit || limit,
             countLimit: archInfo.countLimit,
             defaultOrderBy: archInfo.defaultOrder,
