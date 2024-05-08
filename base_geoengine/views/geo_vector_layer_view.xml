@@ -25,7 +25,7 @@
                         <field name="model_id" />
                         <field
                             name="model_view_id"
-                            domain="[('mode', '=', 'geoengine')]"
+                            domain="[('type', '=', 'geoengine')]"
                         />
                         <field name="model_name" invisible="1" />
                         <field
