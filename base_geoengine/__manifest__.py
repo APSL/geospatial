@@ -30,7 +30,7 @@
             ("include", "web._assets_bootstrap"),
         ]
     },
-    "external_dependencies": {"python": ["shapely", "geojson", "simplejson"]},
+    "external_dependencies": {"python": ["shapely", "geojson"]},
     "installable": True,
     "pre_init_hook": "init_postgis",
 }
