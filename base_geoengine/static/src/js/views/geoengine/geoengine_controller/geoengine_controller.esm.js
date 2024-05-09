@@ -58,16 +58,25 @@ export class GeoengineController extends Component {
             this.props.fields
         );
 
-        const modelConfig = this.props.state?.modelState.config || {
-            resModel: resModel,
-            fields,
-            activeFields,
-            openGroupsByDefault: true,
-        };
+        const modelConfig =
+            this.props.state &&
+            this.props.state.modelState &&
+            this.props.state.modelState.config
+                ? this.props.state.modelState.config
+                : {
+                      resModel: resModel,
+                      fields: fields,
+                      activeFields: activeFields,
+                      openGroupsByDefault: true,
+                  };
+        this.props.searchMenuTypes = this.props.searchMenuTypes || [];
 
         return {
             config: modelConfig,
-            state: this.props.state?.modelState,
+            state:
+                this.props.state && this.props.state.modelState
+                    ? this.props.state.modelState
+                    : null,
             limit: archInfo.limit || limit,
             countLimit: archInfo.countLimit,
             defaultOrderBy: archInfo.defaultOrder,

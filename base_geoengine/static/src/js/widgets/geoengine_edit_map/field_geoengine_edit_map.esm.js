@@ -140,7 +140,7 @@ export class FieldGeoEngineEditMap extends Component {
             if (this.displayValue == value) return;
             this.displayValue = value;
             var ft = new ol.Feature({
-                geometry: this.format.readGeometry(value)
+                geometry: this.format.readGeometry(value),
             });
             this.source.clear();
             this.source.addFeature(ft);
@@ -317,26 +317,32 @@ export class FieldGeoEngineEditMapMultiLine extends FieldGeoEngineEditMap {
 
 export const fieldGeoEngineEditMapMultiPolygon = {
     component: FieldGeoEngineEditMapMultiPolygon,
+    extractProps: (attrs) => FieldGeoEngineEditMap.extractProps(attrs),
 };
 
 export const fieldGeoEngineEditMapPolygon = {
     component: FieldGeoEngineEditMapPolygon,
+    extractProps: (attrs) => FieldGeoEngineEditMap.extractProps(attrs),
 };
 
 export const fieldGeoEngineEditMapPoint = {
     component: FieldGeoEngineEditMapPoint,
+    extractProps: (attrs) => FieldGeoEngineEditMap.extractProps(attrs),
 };
 
 export const fieldGeoEngineEditMapMultiPoint = {
     component: FieldGeoEngineEditMapMultiPoint,
+    extractProps: (attrs) => FieldGeoEngineEditMap.extractProps(attrs),
 };
 
 export const fieldGeoEngineEditMapLine = {
     component: FieldGeoEngineEditMapLine,
+    extractProps: (attrs) => FieldGeoEngineEditMap.extractProps(attrs),
 };
 
 export const fieldGeoEngineEditMapMultiLine = {
     component: FieldGeoEngineEditMapMultiLine,
+    extractProps: (attrs) => FieldGeoEngineEditMap.extractProps(attrs),
 };
 
 registry.category("fields").add("geo_multi_polygon", fieldGeoEngineEditMapMultiPolygon);

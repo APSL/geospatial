@@ -1,7 +1,6 @@
 /** @odoo-module **/
 
-import {domainField, DomainField} from "@web/views/fields/domain/domain_field";
-import {registry} from "@web/core/registry";
+import {DomainField, domainField} from "@web/views/fields/domain/domain_field";
 
 export class DomainFieldExtend extends DomainField {
     async loadCount(props) {
