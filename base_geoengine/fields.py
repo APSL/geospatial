@@ -36,7 +36,12 @@ class GeoField(fields.Field):
 
     @property
     def column_type(self):
-        return ("geometry", f"geometry({self.geo_type.upper()}, {self.srid})")
+        postgis_geom_type = self.geo_type.upper() if self.geo_type else "GEOMETRY"
+        if self.dim == "3":
+            postgis_geom_type += "Z"
+        elif self.dim == "4":
+            postgis_geom_type += "ZM"
+        return ("geometry", f"geometry({postgis_geom_type}, {self.srid})")
 
     def convert_to_column(self, value, record, values=None):
         """Convert value to database format
