@@ -570,7 +570,7 @@ export class GeoengineRenderer extends Component {
      */
     onDisplayPopupRecord(record) {
         const popup = this.getPopup();
-        const feature = this.vectorSource.getFeatureById(record.id);
+        const feature = this.vectorSource.getFeatureById(record.resId);
         if (feature) {
             this.mountGeoengineRecord({
                 popup,

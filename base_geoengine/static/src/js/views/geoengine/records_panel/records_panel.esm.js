@@ -48,7 +48,7 @@ export class RecordsPanel extends Component {
      */
     onDisplayPopupRecord(record) {
         const rec = this.props.list.records.find((val) => val.id === record.id);
-        this.state.isClicked = record.id;
+        this.state.isClicked = record.resId;
         this.props.onDisplayPopupRecord(rec);
     }
 
@@ -76,4 +76,10 @@ export class RecordsPanel extends Component {
 }
 
 RecordsPanel.template = "base_geoengine.RecordsPanel";
+RecordsPanel.props = {
+    list: {type: Object},
+    onDisplayPopupRecord: {type: Function},
+    zoomOnFeature: {type: Function},
+    zoomOutOnFeature: {type: Function},
+};
 RecordsPanel.components = {SearchBarRecords};

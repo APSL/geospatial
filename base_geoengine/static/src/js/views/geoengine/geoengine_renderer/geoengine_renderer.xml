@@ -6,12 +6,12 @@
             <div class="map_container">
                 <div id="olmap" />
             </div>
-            <!-- <RecordsPanel
+            <RecordsPanel
                 list="props.data"
                 onDisplayPopupRecord.bind="onDisplayPopupRecord"
                 zoomOnFeature.bind="zoomOnFeature"
                 zoomOutOnFeature.bind="getOriginalZoom"
-            /> -->
+            />
         </div>
         <div id="popup" class="ol-popup">
             <div
