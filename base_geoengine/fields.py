@@ -30,7 +30,7 @@ class GeoField(fields.Field):
     """
 
     geo_type = None
-    dim = 2
+    dim = "2"
     srid = 3857
     gist_index = True
 
