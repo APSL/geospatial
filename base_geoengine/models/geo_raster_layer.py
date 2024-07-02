@@ -17,6 +17,7 @@ class GeoRasterLayerType(models.Model):
 class GeoRasterLayer(models.Model):
     _name = "geoengine.raster.layer"
     _description = "Raster Layer"
+    _order = "sequence ASC, name"
 
     raster_type = fields.Selection(
         [
