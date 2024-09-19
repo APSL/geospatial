@@ -37,7 +37,7 @@
                     </group>
                     <field name="is_wms" invisible="1" />
                     <group string="WMS options" invisible="not is_wms" colspan="4">
-                        <field name="params_wms" required="is_wms" />
+                        <field name="params_wms" required="is_wms" string="Params" />
                         <field name="server_type" required="is_wms" />
                     </group>
                     <field name="has_type" invisible="1" />
