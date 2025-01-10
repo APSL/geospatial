@@ -3,14 +3,15 @@
 /**
  * Copyright 2023 ACSONE SA/NV
  */
-
-import {Layout} from "@web/search/layout";
-import {useModel} from "@web/views/model";
+import {FormViewDialog} from "web.view_dialogs";
+import {Layout} from "@web/views/layout";
+import {WarningDialog} from "@web/core/errors/error_dialogs";
+import {useModel} from "web.Model";
 import {usePager} from "@web/search/pager_hook";
 import {useOwnedDialogs, useService} from "@web/core/utils/hooks";
-import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
-import {WarningDialog} from "@web/core/errors/error_dialogs";
-import {Component, useState} from "@odoo/owl";
+
+const {Component} = owl;
+const {useState} = owl.hooks;
 
 export class GeoengineController extends Component {
     /**
@@ -40,8 +41,8 @@ export class GeoengineController extends Component {
                 offset: offset,
                 limit: limit,
                 total: count,
-                onUpdate: async ({offset, limit}) => {
-                    await list.load({limit, offset});
+                onUpdate: async ({off, lim}) => {
+                    await list.load({lim, off});
                     this.render(true);
                 },
             };

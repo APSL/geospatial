@@ -4,11 +4,12 @@
  * Copyright 2023 ACSONE SA/NV
  */
 
-import {_lt} from "@web/core/l10n/translation";
-import {registry} from "@web/core/registry";
 import {DomainSelectorGeoFieldInput} from "../domain_selector_geo_field_input/domain_selector_geo_field_input.esm";
+import {_lt} from "@web/core/l10n/translation";
 import {onDidChange} from "../domain_selector_operators.esm";
-import {Component} from "@odoo/owl";
+import {registry} from "@web/core/registry";
+const {hooks} = owl;
+const {Component} = hooks;
 
 const dsf = registry.category("domain_selector/fields");
 

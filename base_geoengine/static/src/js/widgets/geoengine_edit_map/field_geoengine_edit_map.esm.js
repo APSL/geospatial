@@ -6,10 +6,10 @@
 
 import {loadBundle} from "@web/core/assets";
 import {registry} from "@web/core/registry";
-import {useService} from "@web/core/utils/hooks";
-import {standardFieldProps} from "@web/views/fields/standard_field_props";
+import {useEffect, useService} from "@web/core/utils/hooks";
 
-import {Component, onMounted, onRendered, onWillStart, useEffect} from "@odoo/owl";
+const {Component} = owl;
+const {onRendered, onWillStart, onMounted} = owl.hooks;
 
 export class FieldGeoEngineEditMap extends Component {
     setup() {
@@ -137,7 +137,7 @@ export class FieldGeoEngineEditMap extends Component {
              * If the value to be displayed is equal to the one passed in props, do nothing
              * otherwise clear the map and display the new value.
              */
-            if (this.displayValue == value) return;
+            if (this.displayValue === value) return;
             this.displayValue = value;
             var ft = new ol.Feature({
                 geometry: new ol.format.GeoJSON().readGeometry(value),
@@ -171,7 +171,24 @@ export class FieldGeoEngineEditMap extends Component {
      * Allow you to setup the trash button and the draw interaction.
      */
     setupControls() {
-        if (!this.props.value) {
+        if (this.props.value) {
+            void (
+                this.drawInteraction !== undefined &&
+                this.map.removeInteraction(this.drawInteraction)
+            );
+            this.selectInteraction = new ol.interaction.Select();
+            this.modifyInteraction = new ol.interaction.Modify({
+                features: this.selectInteraction.getFeatures(),
+            });
+            this.map.addInteraction(this.selectInteraction);
+            this.map.addInteraction(this.modifyInteraction);
+
+            this.modifyInteraction.on("modifyend", (e) => {
+                e.features.getArray().forEach((item) => {
+                    this.onUIChange(item.getGeometry());
+                });
+            });
+        } else {
             void (
                 this.selectInteraction !== undefined &&
                 this.map.removeInteraction(this.selectInteraction)
@@ -188,23 +205,6 @@ export class FieldGeoEngineEditMap extends Component {
 
             this.drawInteraction.on("drawend", (e) => {
                 this.onUIChange(e.feature.getGeometry());
-            });
-        } else {
-            void (
-                this.drawInteraction !== undefined &&
-                this.map.removeInteraction(this.drawInteraction)
-            );
-            this.selectInteraction = new ol.interaction.Select();
-            this.modifyInteraction = new ol.interaction.Modify({
-                features: this.selectInteraction.getFeatures(),
-            });
-            this.map.addInteraction(this.selectInteraction);
-            this.map.addInteraction(this.modifyInteraction);
-
-            this.modifyInteraction.on("modifyend", (e) => {
-                e.features.getArray().forEach((item) => {
-                    this.onUIChange(item.getGeometry());
-                });
             });
         }
 
@@ -262,7 +262,6 @@ export class FieldGeoEngineEditMap extends Component {
 
 FieldGeoEngineEditMap.template = "base_geoengine.FieldGeoEngineEditMap";
 FieldGeoEngineEditMap.props = {
-    ...standardFieldProps,
     opacity: {type: Number, optional: true},
     color: {type: String, optional: true},
 };

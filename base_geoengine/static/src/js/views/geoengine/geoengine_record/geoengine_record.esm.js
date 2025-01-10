@@ -9,9 +9,10 @@ import {GeoengineCompiler} from "../geoengine_compiler.esm";
 import {INFO_BOX_ATTRIBUTE} from "../geoengine_arch_parser.esm";
 import {registry} from "@web/core/registry";
 import {useViewCompiler} from "@web/views/view_compiler";
-import {Component, onWillUpdateProps} from "@odoo/owl";
 
 const formatters = registry.category("formatters");
+const {Component} = owl;
+const {onWillUpdateProps} = owl.hooks;
 
 function getValue(record, fieldName) {
     const field = record.fields[fieldName];

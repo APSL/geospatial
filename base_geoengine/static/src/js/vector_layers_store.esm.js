@@ -1,10 +1,9 @@
 /** @odoo-module */
-import {reactive} from "@odoo/owl";
 
 class VectorLayersStore {
     /**
      * Set vector layers to the store.
-     * @param {*} rasters
+     * @param {*} vectors
      */
     setVectors(vectors) {
         const newVectors = vectors.map((vector) => {
@@ -33,4 +32,4 @@ class VectorLayersStore {
     }
 }
 
-export const vectorLayersStore = reactive(new VectorLayersStore());
+export const vectorLayersStore = new VectorLayersStore();

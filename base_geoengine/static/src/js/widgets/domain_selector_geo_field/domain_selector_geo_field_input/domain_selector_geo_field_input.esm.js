@@ -4,14 +4,15 @@
  * Copyright 2023 ACSONE SA/NV
  */
 
-import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_selector";
+import {ModelFieldSelector} from "web.ModelFieldSelector";
 import {ModelSelector} from "@web/core/model_selector/model_selector";
 import {Domain} from "@web/core/domain";
 import {evaluate} from "@web/core/py_js/py_interpreter";
 import {useOwnedDialogs} from "@web/core/utils/hooks";
 import {DomainSelectorGeoFieldDialog} from "../domain_selector_geo_field_dialog/domain_selector_geo_field_dialog.esm";
 
-import {Component, onWillStart, onWillUpdateProps, useState} from "@odoo/owl";
+const {hooks} = owl;
+const {Component, onWillStart, onWillUpdateProps, useState} = hooks;
 
 /**
  * This class correspond to the value of the right operand when a geo_field has

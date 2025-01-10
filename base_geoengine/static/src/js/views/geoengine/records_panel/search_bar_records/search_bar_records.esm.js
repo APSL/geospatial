@@ -4,7 +4,8 @@
  * Copyright 2023 ACSONE SA/NV
  */
 
-import {Component, useRef} from "@odoo/owl";
+const {Component} = owl;
+const {useRef} = owl.hooks;
 
 export class SearchBarRecords extends Component {
     setup() {

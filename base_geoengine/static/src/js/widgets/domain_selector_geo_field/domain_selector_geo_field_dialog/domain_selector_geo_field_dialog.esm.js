@@ -4,7 +4,7 @@
  * Copyright 2023 ACSONE SA/NV
  */
 
-import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
+import {DomainSelectorDialog} from "@web/widgets/domain_selector_dialog";
 import {_t} from "@web/core/l10n/translation";
 
 /**

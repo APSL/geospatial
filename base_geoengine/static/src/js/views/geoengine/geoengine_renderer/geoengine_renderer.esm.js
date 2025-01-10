@@ -14,16 +14,17 @@ import {useService} from "@web/core/utils/hooks";
 import {registry} from "@web/core/registry";
 import {RelationalModel} from "@web/views/relational_model";
 import {evaluateExpr} from "@web/core/py_js/py";
-import {
-    Component,
-    mount,
-    onMounted,
-    onPatched,
+import {reactive} from "@odoo/owl";
+const {hooks} = owl;
+const {
     onWillStart,
     onWillUpdateProps,
-    reactive,
     useState,
-} from "@odoo/owl";
+    Component,
+    onMounted,
+    onPatched,
+    mount,
+} = hooks;
 
 /* CONSTANTS */
 const DEFAULT_BEGIN_COLOR = "#FFFFFF";

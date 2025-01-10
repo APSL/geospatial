@@ -13,7 +13,7 @@ import {onDidChange} from "../domain_selector_operators.esm";
 
 const dso = registry.category("domain_selector/operator");
 
-import {Component} from "@odoo/owl";
+const {Component} = owl;
 
 /**
  * This method is extended from DomainSelectorNumberField to add some operators

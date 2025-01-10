@@ -3,16 +3,10 @@
 /**
  * Copyright 2023 ACSONE SA/NV
  */
-import {useService} from "@web/core/utils/hooks";
 import {SearchBarRecords} from "./search_bar_records/search_bar_records.esm";
-
-import {
-    Component,
-    onWillRender,
-    onWillStart,
-    onWillUpdateProps,
-    useState,
-} from "@odoo/owl";
+import {useService} from "@web/core/utils/hooks";
+const {Component} = owl;
+const {useState, onWillRender, onWillStart, onWillUpdateProps} = owl.hooks;
 
 export class RecordsPanel extends Component {
     setup() {
@@ -67,7 +61,7 @@ export class RecordsPanel extends Component {
      * This method allows you to filter items according to the value passed in parameter.
      * @param {*} value
      * @param {*} items
-     * @returns
+     * @returns {*}
      */
     filterItems(value, items) {
         const lowerValue = value.toLowerCase();

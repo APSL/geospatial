@@ -4,11 +4,11 @@
  * Copyright 2023 ACSONE SA/NV
  */
 
-import {addFieldDependencies} from "@web/views/utils";
 import {Field} from "@web/views/fields/field";
-import {Widget} from "@web/views/widgets/widget";
+import {Widget} from "web.Widget";
 import {XMLParser} from "@web/core/utils/xml";
 import {_lt} from "@web/core/l10n/translation";
+import {addFieldDependencies} from "@web/views/utils";
 
 export const INFO_BOX_ATTRIBUTE = "info_box";
 

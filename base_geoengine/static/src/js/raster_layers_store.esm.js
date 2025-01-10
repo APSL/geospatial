@@ -1,7 +1,5 @@
 /** @odoo-module */
 
-import {reactive} from "@odoo/owl";
-
 class RasterLayersStore {
     /**
      * Set raster layers to the store.
@@ -39,4 +37,4 @@ class RasterLayersStore {
         return this.rasters.length;
     }
 }
-export const rasterLayersStore = reactive(new RasterLayersStore());
+export const rasterLayersStore = new RasterLayersStore();
