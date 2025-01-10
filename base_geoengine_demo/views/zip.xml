@@ -103,6 +103,7 @@
     <field name="model">dummy.zip</field>
   </record>
   <record id="geoengine_vector_layer_basictest0" model="geoengine.vector.layer">
+    <field name="model_id" ref="base_geoengine_demo.model_dummy_zip" />
     <field name="geo_field_id" ref="base_geoengine_demo.field_dummy_zip__the_geom" />
     <field name="name">Basic ZIP</field>
     <field eval="1" name="sequence" />
@@ -115,6 +116,7 @@
   </record>
   <record id="geoengine_vector_layer_coloredrangetest0" model="geoengine.vector.layer">
     <field name="geo_field_id" ref="base_geoengine_demo.field_dummy_zip__the_geom" />
+    <field name="model_id" ref="base_geoengine_demo.model_dummy_zip" />
     <field name="name">Colored range ZIP (total_sales)</field>
     <field name="classification">unique</field>
     <field eval="2" name="sequence" />
@@ -133,6 +135,7 @@
         model="geoengine.vector.layer"
     >
     <field name="geo_field_id" ref="base_geoengine_demo.field_dummy_zip__the_geom" />
+    <field name="model_id" ref="base_geoengine_demo.model_dummy_zip" />
     <field name="name">Colored range ZIP Eq Interval (total_sales)</field>
     <field name="classification">interval</field>
     <field eval="3" name="sequence" />
@@ -192,7 +195,7 @@
             name="attribute_field_id"
             ref="base_geoengine_demo.field_geoengine_demo_automatic_retailing_machine__name"
         />
-    <field name="begin_color">#0000FF</field>
+    <field name="begin_color">#000/home/amarroig/Projectes/Odoo/base_geoengine/extra-addons/geospatial/base_geoengine_demo0FF</field>
     <field name="display_polygon_labels" eval="0" />
     <field name="layer_opacity">0.8</field>
   </record>
